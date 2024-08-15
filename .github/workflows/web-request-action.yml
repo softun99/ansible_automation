@@ -1,7 +1,28 @@
- -name: Web Request Action
-  uses: Satak/webrequest-action@v1.2.3
-  with:
-    url: https://microsoft.com
+name: CI
+
+on:
+ push:
+   branches: ["main"]
+ pull_request:
+   branches: ["main"]
+ workflow_dispatch:
+
+jobs:
+ build:
+   runs-on: ubuntu-latest
+   steps:
+     - uses: actions/checkout@v3
+     - name: Run a multi-Line script
+       run: |
+         echo Add other actions to build,
+         echo test, and deploy your project.
+   
+     - name: Web Request Action
+       uses: Satak/webrequest-action@v1.2.3
+       with:
+        url: https://api.chucknorris.io/jokes/random
+        method: GET
     
+          
     
           
